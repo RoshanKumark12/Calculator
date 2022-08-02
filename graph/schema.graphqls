@@ -1,0 +1,69 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type Todo {
+  id: ID!
+  text: String!
+  done: Boolean!
+  user: User!
+}
+
+type User {
+  id: ID!
+  name: String!
+}
+
+type Query {
+  todos: [Todo!]!
+  addition(input:additionRequest):additionResponse
+  subtraction(input:subtractionRequest):subtractionResponse
+  multiplication(input:multiplicationRequest):multiplicationResponse
+  division(input:divisionRequest):divisionResponse
+  calculation(input:calculationRequest):calculationResponse
+}
+input additionRequest{
+  number1: Int
+  number2: Int
+}
+type additionResponse{
+  number3: Int
+}
+input subtractionRequest{
+  number1: Int
+  number2: Int
+}
+type subtractionResponse{
+  number3: Int
+}
+input multiplicationRequest{
+  number1: Int
+  number2: Int
+}
+type multiplicationResponse{
+  number3: Int
+}
+input divisionRequest{
+  number1: Int
+  number2: Int
+}
+type divisionResponse{
+  number3: Int
+}
+input calculationRequest{
+  operator: String
+  number1: Int
+  number2: Int
+}
+type calculationResponse{
+  number3: Int
+}
+
+input NewTodo {
+  text: String!
+  userId: String!
+}
+
+type Mutation {
+  createTodo(input: NewTodo!): Todo!
+}
